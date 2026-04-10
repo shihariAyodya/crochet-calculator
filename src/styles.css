@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Noto+Sans+Sinhala:wght@400;700&display=swap');
+
+:root {
+  --grape: #824C71;
+  --blackberry: #4A2545;
+  --teal: #90AA86;
+  --white: #ffffff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #4A2545 0%, #824C71 100%) !important;
+  background-attachment: fixed;
+  font-family: 'Noto Sans Sinhala', sans-serif;
+  color: var(--white);
+  min-height: 100vh;
+}
+
+.welcome-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 8vw, 4rem);
+  color: var(--white);
+  margin-bottom: 10px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.stylish-input {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.btn-start {
+  width: 100%;
+  padding: 18px;
+  margin-top: 15px;
+  font-size: 1.3rem;
+  background: var(--white);
+  color: var(--blackberry);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.btn-lang {
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.btn-lang.active {
+  background: var(--teal);
+  border-color: var(--teal);
+}
+
+.back-link {
+  display: block;
+  margin: 15px auto 0;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
