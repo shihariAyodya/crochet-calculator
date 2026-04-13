@@ -74,15 +74,28 @@ body {
 
 .btn-start {
   width: 100%;
-  padding: 18px;
-  margin-top: 15px;
-  font-size: 1.3rem;
-  background: var(--white);
-  color: var(--blackberry);
+  padding: 15px;
+  /* Matches the Sage Green in your screenshot */
+  background: #8fb693; 
+  color: white;
   border: none;
-  border-radius: 15px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
   cursor: pointer;
-  font-weight: 800;
+  transition: background 0.3s ease;
+  /* Shadow removed */
+}
+
+.btn-start:hover {
+  /* A slightly darker version for the hover effect */
+  background: #7da581;
+}
+
+/* Also updating the language button to match the new vibe */
+.btn-lang.active {
+  background: #8fb693 !important;
+  border-color: #8fb693 !important;
 }
 
 .btn-lang {
@@ -106,4 +119,9 @@ body {
   border: none;
   color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
+}
+
+.app-container {
+  position: relative; /* This is crucial for absolute positioning */
+  min-height: 100vh;
 }

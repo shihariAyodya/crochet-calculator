@@ -3,7 +3,7 @@ import React from 'react';
 export default function ResultsPage({ lang, data, onRestart, onBack }) {
   const t = {
     en: { 
-      title: "Result", 
+      title: "Final Price", 
       total: "Recommended Price", 
       restart: "New Calculation",
       back: "← Edit Details" 

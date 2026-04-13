@@ -8,11 +8,7 @@ function App() {
   const [lang, setLang] = useState('en');
   const [resultData, setResultData] = useState(null);
 
-  const handleStart = (selectedLang) => {
-    setLang(selectedLang);
-    setPage('calculator');
-  };
-
+  // This handles the math logic
   const handleCalculate = (data) => {
     const total = Number(data.yarn) + (Number(data.hours) * Number(data.rate));
     setResultData({ ...data, total });
@@ -21,7 +17,33 @@ function App() {
 
   return (
     <div className="app-container">
-      {page === 'welcome' && <WelcomePage onStart={handleStart} />}
+      
+      {/* --- NEW PART STARTS HERE: The Global Language Switcher --- */}
+      <div style={{ position: 'absolute', top: '20px', right: '20px', display: 'flex', gap: '10px', zIndex: 100 }}>
+        <button 
+          className={`btn-lang ${lang === 'en' ? 'active' : ''}`} 
+          onClick={() => setLang('en')}
+        >
+          EN
+        </button>
+        <button 
+          className={`btn-lang ${lang === 'si' ? 'active' : ''}`} 
+          onClick={() => setLang('si')}
+        >
+          සිංහල
+        </button>
+      </div>
+      {/* --- NEW PART ENDS --- */}
+
+      {/* 1. Welcome Page (Updated to use global lang) */}
+      {page === 'welcome' && (
+        <WelcomePage 
+          lang={lang} 
+          onStart={() => setPage('calculator')} 
+        />
+      )}
+
+      {/* 2. Calculator Page */}
       {page === 'calculator' && (
         <CalculatorPage 
           lang={lang} 
@@ -29,14 +51,16 @@ function App() {
           onCalculate={handleCalculate} 
         />
       )}
+
+      {/* 3. Results Page */}
       {page === 'results' && (
-  <ResultsPage 
-    lang={lang} 
-    data={resultData} 
-    onRestart={() => setPage('welcome')} 
-    onBack={() => setPage('calculator')} // This is the new line
-  />
-)}
+        <ResultsPage 
+          lang={lang} 
+          data={resultData} 
+          onRestart={() => setPage('welcome')} 
+          onBack={() => setPage('calculator')} 
+        />
+      )}
     </div>
   );
 }
