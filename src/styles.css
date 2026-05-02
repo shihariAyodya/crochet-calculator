@@ -1,103 +1,136 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Noto+Sans+Sinhala:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Noto+Sans+Sinhala:wght@400;700&display=swap');
 
 :root {
-  --grape: #824C71;
-  --blackberry: #4A2545;
-  --teal: #90AA86;
+  --blackberry: #4A2545;  /* Deep primary background */
+  --grape: #824C71;       /* Secondary gradient shade */
+  --dusty-rose: #A27B91;  /* Original language button color */
+  --cream: #E8D5B5;       /* High-contrast main action color */
   --white: #ffffff;
 }
 
+/* --- Global Reset & Responsive Base --- */
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #4A2545 0%, #824C71 100%) !important;
+  background: linear-gradient(135deg, var(--blackberry) 0%, var(--grape) 100%) !important;
   background-attachment: fixed;
   font-family: 'Noto Sans Sinhala', sans-serif;
   color: var(--white);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden; /* Prevents awkward side-scrolling on mobile[cite: 5] */
 }
 
-.welcome-screen {
+.app-container {
+  position: relative;
+  width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Welcome Screen Layout --- */
+.welcome-screen {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  box-sizing: border-box;
-}
-
-.title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(2rem, 8vw, 4rem);
-  color: var(--white);
-  margin-bottom: 10px;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-sizing: border-box; /* Ensures padding doesn't break width[cite: 5] */
   text-align: center;
 }
 
+/* --- Hero Typography --- */
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.2rem, 8vw, 4rem); /* Responsive sizing */
+  color: var(--white);
+  margin-bottom: 25px;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  line-height: 1;
+  font-weight: 800;
+  width: 100%;
+}
+
+.title-large {
+  display: block; /* Forces "Calculator" to new line */
+  font-size: clamp(3rem, 13vw, 6.5rem); /* Massive impact size */
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  margin-top: 8px;
+}
+
+/* --- Glassmorphism Card --- */
 .glass-card {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
-  padding: 30px;
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  padding: clamp(20px, 5vw, 35px);
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-  text-align: center;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
   width: 100%;
-  max-width: 400px;
+  max-width: 420px; /* Neat limit for desktop */
+  box-sizing: border-box;
 }
 
+/* --- Form Visibility Fixes --- */
 .input-group {
   text-align: left;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .input-group label {
   display: block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  margin-bottom: 5px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-bottom: 8px;
   text-transform: uppercase;
+  color: var(--white);
+  letter-spacing: 0.05em;
 }
 
 .stylish-input {
   width: 100%;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
   color: white;
-  font-size: 1rem;
+  font-size: 1.1rem;
   box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s;
 }
 
+.stylish-input::placeholder {
+  color: var(--cream);
+  opacity: 0.6;
+}
+
+/* --- Buttons --- */
 .btn-start {
   width: 100%;
-  padding: 15px;
-  /* Matches the Sage Green in your screenshot */
-  background: #8fb693; 
-  color: white;
+  padding: 16px;
+  background: var(--cream);
+  color: var(--blackberry);
   border: none;
   border-radius: 20px;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
-  /* Shadow removed */
+  transition: all 0.3s ease;
 }
 
 .btn-start:hover {
-  /* A slightly darker version for the hover effect */
-  background: #7da581;
+  background: #f5e6cf;
+  transform: translateY(-2px);
 }
 
-/* Also updating the language button to match the new vibe */
-.btn-lang.active {
-  background: #8fb693 !important;
-  border-color: #8fb693 !important;
-}
-
+/* Language Selection (Original Style Reverted) */
 .btn-lang {
   padding: 10px 20px;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -105,23 +138,37 @@ body {
   color: white;
   border-radius: 12px;
   cursor: pointer;
+  margin: 5px;
+  font-weight: 600;
 }
 
 .btn-lang.active {
-  background: var(--teal);
-  border-color: var(--teal);
+  background: rgba(162, 123, 145, 0.8) !important;
+  border-color: rgba(162, 123, 145, 1) !important;
+}
+
+/* --- Mobile Specific Fixes --- */
+@media (max-width: 480px) {
+  .welcome-screen {
+    padding: 15px;
+  }
+
+  .glass-card {
+    width: 95%; /* More room on small screens */
+    padding: 25px 20px;
+  }
+
+  .title {
+    margin-bottom: 20px;
+  }
 }
 
 .back-link {
   display: block;
-  margin: 15px auto 0;
+  margin: 20px auto 0;
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
-}
-
-.app-container {
-  position: relative; /* This is crucial for absolute positioning */
-  min-height: 100vh;
+  text-decoration: underline;
 }

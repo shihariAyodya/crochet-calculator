@@ -77,7 +77,6 @@ export default function CalculatorPage({ lang, onBack, onCalculate }) {
         <div className="input-group">
           <label>{t[lang].curr}</label>
           <select className="stylish-input" value={currency} onChange={(e) => setCurrency(e.target.value)}>
-            <option value="Rs." style={{color: 'black'}}>Rs.</option>
             <option value="LKR" style={{color: 'black'}}>LKR</option>
             <option value="$" style={{color: 'black'}}>$ (USD)</option>
           </select>
